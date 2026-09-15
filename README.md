@@ -2,11 +2,11 @@
 
 API REST que implementa o modelo de dados do Git — commits, branches e HEAD — com o histórico como grafo em memória. Node + Express.
 
-Nasceu de um exercício de ~60 linhas que simulava o Git em JavaScript. Virou um backend com camadas separadas, tratamento centralizado de erros e 17 testes.
+Nasceu de um exercício de ~60 linhas que simulava o Git em JavaScript. Virou um backend com camadas separadas, tratamento centralizado de erros e 18 testes.
 
 ## Stack
 
-Node 18+ · Express 4 · `node:test` · persistência em JSON
+Node 18+ · Express 5 · `node:test` · persistência em JSON
 
 ## Rodando
 
