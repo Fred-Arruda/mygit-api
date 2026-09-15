@@ -16,7 +16,7 @@ cd mygit-api
 npm install
 npm start                 # http://localhost:3000
 npm run dev               # com --watch, reinicia a cada alteração
-npm test                  # 17 testes
+npm test                  # 18 testes
 ```
 
 Os dados ficam em `data/repos.json`, criado na primeira escrita. `PORT` e `DATA_FILE` podem ser definidos por variável de ambiente.
@@ -88,7 +88,7 @@ src/
   app.js          rotas Express. Traduz HTTP <-> domínio, sem regra de Git.
   server.js       lê o ambiente (porta, arquivo) e sobe o servidor.
 test/
-  git.test.js     9 testes de domínio, rodam em milissegundos.
+  git.test.js     10 testes de domínio, rodam em milissegundos.
   api.test.js     8 testes de integração, sobem o servidor numa porta livre.
 ```
 
