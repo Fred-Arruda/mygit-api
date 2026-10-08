@@ -94,13 +94,13 @@ test/
 
 A regra que orienta tudo: **o domínio não conhece HTTP e o HTTP não conhece as regras**. `git.js` lança `GitError` com códigos próprios (`NOT_FOUND`, `CONFLICT`, `INVALID_INPUT`); uma tabela em `app.js` traduz esses códigos para status HTTP.
 
-Isso não é decoração. A primeira versão deste projeto usava um roteador escrito à mão em cima do módulo `http`; a migração para Express reescreveu apenas o `app.js` — o domínio, o store e os 17 testes ficaram idênticos, inclusive os de integração, que não sabem qual camada web está por baixo.
+Isso não é decoração. A primeira versão deste projeto usava um roteador escrito à mão em cima do módulo `http`; a migração para Express reescreveu apenas o `app.js` — o domínio, o store e os 18 testes ficaram idênticos, inclusive os de integração, que não sabem qual camada web está por baixo.
 
 ## Decisões
 
 **Por que o `parent` é um ID e não o objeto?** Guardar o objeto criaria referência circular e quebraria o `JSON.stringify`. Guardar o ID é o que o Git real faz — um commit armazena o hash do pai, não o pai inteiro — e mantém o grafo serializável.
 
-**Por que o tratamento de erro é centralizado?** Nenhuma rota tem `try/catch`. O erro sobe até o middleware `errorHandler`, que traduz o código do domínio para o status HTTP num lugar só. Com sete rotas isso já evita repetição; com setenta, é a diferença entre um formato de erro consistente e uma loteria. O preço é que os handlers precisam ser síncronos: o Express 4 não captura rejeição de `async`, e um handler assíncrono que lança deixa a requisição pendurada até dar timeout, em vez de responder 500.
+**Por que o tratamento de erro é centralizado?** Nenhuma rota tem `try/catch`. O erro sobe até o middleware `errorHandler`, que traduz o código do domínio para o status HTTP num lugar só. Com sete rotas isso já evita repetição; com setenta, é a diferença entre um formato de erro consistente e uma loteria. O preço é que os handlers precisam ser síncronos: o Express 5 não captura rejeição de `async`, e um handler assíncrono que lança deixa a requisição pendurada até dar timeout, em vez de responder 500.
 
 **Por que `createApp` não chama `listen`?** Separar a montagem da app da abertura da porta é o que permite os testes subirem a aplicação inteira na porta 0 — o SO escolhe uma livre — sem porta fixa e sem conflito quando vários rodam juntos.
 
