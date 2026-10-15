@@ -1,3 +1,4 @@
+   ![CI](https://github.com/Fred-Arruda/mygit-api/actions/workflows/ci.yml/badge.svg)
 # mygit-api
 
 API REST que implementa o modelo de dados do Git — commits, branches e HEAD — com o histórico como grafo em memória. Node + Express.
@@ -6,7 +7,7 @@ Nasceu de um exercício de ~60 linhas que simulava o Git em JavaScript. Virou um
 
 ## Stack
 
-Node 18+ · Express 5 · `node:test` · persistência em JSON
+Node 20+ · Express 5 · `node:test` · persistência em JSON
 
 ## Rodando
 
